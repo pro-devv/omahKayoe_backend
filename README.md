@@ -1,2 +1,2 @@
-# omahKayoe_backend
+# Untuk Administrator Omah Kayoe
 Administrator
