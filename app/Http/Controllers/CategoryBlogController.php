@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryBlog;
+use Exception;
 use Illuminate\Http\Request;
 
 class CategoryBlogController extends Controller
@@ -11,9 +13,11 @@ class CategoryBlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $param;
     public function index()
     {
-        //
+        $this->param['data'] = CategoryBlog::all();
+        return view('pages.category_blog.index',$this->param);
     }
 
     /**
@@ -23,7 +27,7 @@ class CategoryBlogController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +38,22 @@ class CategoryBlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+        ],[
+            'required' => 'Data harus terisi'
+        ]);
+
+        try {
+            $addData = new CategoryBlog;
+            $addData->name_blog = $request->nama_kategori;
+            $addData->save();
+            return redirect('/category-blog')->withStatus('Berhasil menyimpan data');
+        } catch (Exception $e ) {
+            return redirect()->back()->withError('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError('Terdapat kesalahan', $e);
+        }
     }
 
     /**
@@ -56,7 +75,8 @@ class CategoryBlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->param['data'] = CategoryBlog::findOrFail($id);
+        return view('pages.category_blog.edit',$this->param);
     }
 
     /**
@@ -68,7 +88,22 @@ class CategoryBlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+        ],[
+            'required' => 'Data harus terisi'
+        ]);
+
+        try {
+            $updateData = CategoryBlog::find($id);
+            $updateData->name_blog = $request->nama_kategori;
+            $updateData->save();
+            return redirect('/category-blog')->withStatus('Berhasil menyimpan data');
+        } catch (Exception $e ) {
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }
     }
 
     /**
@@ -79,6 +114,14 @@ class CategoryBlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $deleteData = CategoryBlog::find($id);
+            $deleteData->delete();
+            return redirect('/category-blog')->withStatus('Berhasil menghapus data');
+        } catch (Exception $e ) {
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }
     }
 }

@@ -34,7 +34,7 @@
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label for="title" class="form-control-label mb-2">Judul Blog <span>*</span></label>
-                                    <input type="text" id="title" name="title" placeholder="Masukkan Judul Blog" class="form-control @error('title') is-invalid @enderror" >
+                                    <input type="text" id="title" name="title" placeholder="Masukkan Judul Blog" class="form-control @error('title') is-invalid @enderror"  autofocus>
                                     @error('title')
                                     <div class="invalid-feedback">
                                         <small class="help-block form-text text-danger">{{$message}}</small>
