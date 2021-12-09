@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,9 +13,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $param;
     public function index()
     {
-        //
+        $this->param['data'] = Category::all();
+        return view('pages.category-product.index',$this->param);
     }
 
     /**
@@ -34,7 +38,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+        ],[
+            'required' => 'Data harus terisi'
+        ]);
+
+        try {
+            $addData = new Category;
+            $addData->name_category = $request->nama_kategori;
+            $addData->save();
+            return redirect('/category-product')->withStatus('Berhasil menyimpan data');
+        } catch (Exception $e ) {
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }
     }
 
     /**
@@ -56,7 +75,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->param['data'] = Category::findOrFail($id);
+        return view('pages.category-product.edit',$this->param);
     }
 
     /**
@@ -68,7 +88,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required',
+        ],[
+            'required' => 'Data harus terisi'
+        ]);
+
+        try {
+            $updateData = Category::find($id);
+            $updateData->name_category = $request->nama_kategori;
+            $updateData->save();
+            return redirect('/category-product')->withStatus('Berhasil menyimpan data');
+        } catch (Exception $e ) {
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }
     }
 
     /**
@@ -79,6 +114,15 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $deleteData = Category::find($id);
+            $deleteData->delete();
+            return redirect('/category-product')->withStatus('Berhasil menghapus data');
+        } catch (Exception $e ) {
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }
+
     }
 }

@@ -28,29 +28,7 @@
     </div>
 
     <div class="content">
-        <div class="row">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{session('status')}}
-                </div>
-            @elseif (session('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{session('error')}}
-                </div>
-            @endif
-        </div>
         <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-sm-12">
-                    <a href="{{ route('product.create') }}">
-                        <button class="btn btn-primary btn-icon-split mb-3 float-left">
-                            <span class="icon text-white">
-                                <i class="ti-plus"></i>&nbsp;Tambah Data
-                            </span>
-                        </button>
-                    </a>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -59,41 +37,18 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Gambar Produk</th>
+                                        <th>Rating Produk</th>
                                         <th>Nama Produk</th>
-                                        <th>Kategori</th>
-                                        <th>Penjual</th>
-                                        <th>Harga</th>
-                                        <th>deskripsi</th>
-                                        <th>Aksi</th>
+                                        <th>Ulasan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($data as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td style="width: 25%">
-                                                <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="img-fluid w-50">
-                                            </td>
+                                            <td>{{ ucwords($item->rating ) }}</td>
                                             <td>{{ ucwords($item->name_product ) }}</td>
-                                            <td>{{ ucwords($item->name_category ) }}</td>
-                                            <td>{{ ucwords($item->name ) }}</td>
-                                            <td>Rp.{{ number_format($item->price,2,',','.') }}</td>
-                                            <td>{{ ucwords($item->desc) }}</td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <div class="p-1">
-                                                        <a href="{{ route('product.edit',$item->id) }}" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>
-                                                    </div>
-                                                    <div class="p-1">
-                                                        <form action="{{ route('product.destroy',$item->id) }}" method="POST">
-                                                            @method('delete')
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data ?')"><i class="ti-trash"></i></button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td>{{ ucwords($item->desc_rating ) }}</td>
                                         </tr>
                                     @empty
                                         <p class="text-warning">Tidak ada data</p>

@@ -10,18 +10,18 @@
                         <a href="{{ route('banner.index') }}"><i class="menu-icon ti-image"></i>Banner </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-shopping-cart"></i>Produk</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-shopping-cart"></i>Produk</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="ti-pencil-alt"></i><a href="ui-badges.html">Tambah Produk</a></li>
-                            <li><i class="ti-check-box"></i><a href="ui-tabs.html">Kategori Produk</a></li>
-                            <li><i class="ti-comment-alt"></i><a href="ui-tabs.html">Ulasan</a></li>
+                            <li><i class="ti-pencil-alt"></i><a href="{{ route('product.index') }}">Tambah Produk</a></li>
+                            <li><i class="ti-check-box"></i><a href="{{ route('category-product.index') }}">Kategori Produk</a></li>
+                            <li><i class="ti-comment-alt"></i><a href="{{ route('rating') }}">Ulasan</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Blog</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="ti-pencil-alt"></i><a href="ui-badges.html">Tambah Blog</a></li>
-                            <li><i class="ti-check-box"></i><a href="ui-tabs.html">Kategori Blog</a></li>
+                            <li><i class="ti-pencil-alt"></i><a href="{{ route('blog.index') }}">Tambah Blog</a></li>
+                            <li><i class="ti-check-box"></i><a href="{{ route('category-blog.index') }}">Kategori Blog</a></li>
                         </ul>
                     </li>
                     <li class="">
@@ -38,18 +38,18 @@
                         <a href="{{ route('banner.index') }}"><i class="menu-icon ti-image"></i>Banner </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-shopping-cart"></i>Produk</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-shopping-cart"></i>Produk</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="ti-pencil-alt"></i><a href="ui-badges.html">Tambah Produk</a></li>
-                            <li><i class="ti-check-box"></i><a href="ui-tabs.html">Kategori Produk</a></li>
-                            <li><i class="ti-comment-alt"></i><a href="ui-tabs.html">Ulasan</a></li>
+                            <li><i class="ti-pencil-alt"></i><a href="{{ route('product.index') }}">Tambah Produk</a></li>
+                            <li><i class="ti-check-box"></i><a href="{{ route('category-product.index') }}">Kategori Produk</a></li>
+                            <li><i class="ti-comment-alt"></i><a href="{{ route('rating') }}">Ulasan</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Blog</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="ti-pencil-alt"></i><a href="ui-badges.html">Tambah Blog</a></li>
-                            <li><i class="ti-check-box"></i><a href="ui-tabs.html">Kategori Blog</a></li>
+                            <li><i class="ti-pencil-alt"></i><a href="{{ route('blog.index') }}">Tambah Blog</a></li>
+                            <li><i class="ti-check-box"></i><a href="{{ route('category-blog.index') }}">Kategori Blog</a></li>
                         </ul>
                     </li>
                     <li class="">

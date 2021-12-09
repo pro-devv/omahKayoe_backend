@@ -42,7 +42,7 @@
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-sm-12">
-                    <a href="{{ route('product.create') }}">
+                    <a href="{{ route('blog.create') }}">
                         <button class="btn btn-primary btn-icon-split mb-3 float-left">
                             <span class="icon text-white">
                                 <i class="ti-plus"></i>&nbsp;Tambah Data
@@ -59,12 +59,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Gambar Produk</th>
-                                        <th>Nama Produk</th>
+                                        <th>Thumbnail</th>
+                                        <th>Judul</th>
                                         <th>Kategori</th>
-                                        <th>Penjual</th>
-                                        <th>Harga</th>
-                                        <th>deskripsi</th>
+                                        <th>Pengarang</th>
+                                        <th>Desc</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -73,20 +72,19 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td style="width: 25%">
-                                                <img src="{{ asset($item->thumbnail) }}" alt="{{ $item->title }}" class="img-fluid w-50">
+                                                <img src="{{ asset('img/banner/'.$item->banner) }}" alt="{{ $item->title }}" class="img-fluid w-50">
                                             </td>
-                                            <td>{{ ucwords($item->name_product ) }}</td>
-                                            <td>{{ ucwords($item->name_category ) }}</td>
+                                            <td>{{ ucwords($item->title ) }}</td>
+                                            <td>{{ ucwords($item->name_blog ) }}</td>
                                             <td>{{ ucwords($item->name ) }}</td>
-                                            <td>Rp.{{ number_format($item->price,2,',','.') }}</td>
-                                            <td>{{ ucwords($item->desc) }}</td>
+                                            <td>{{ ucwords($item->desc ) }}</td>
                                             <td>
                                                 <div class="d-flex">
                                                     <div class="p-1">
-                                                        <a href="{{ route('product.edit',$item->id) }}" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>
+                                                        <a href="{{ route('blog.edit',$item->id) }}" class="btn btn-warning"><i class="ti-pencil-alt"></i></a>
                                                     </div>
                                                     <div class="p-1">
-                                                        <form action="{{ route('product.destroy',$item->id) }}" method="POST">
+                                                        <form action="{{ route('blog.destroy',$item->id) }}" method="POST">
                                                             @method('delete')
                                                             @csrf
                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data ?')"><i class="ti-trash"></i></button>

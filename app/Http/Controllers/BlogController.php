@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\CategoryBlog;
+use Exception;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,9 +14,15 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $param;
     public function index()
     {
-        //
+        $this->param['data'] = Blog::select('blog.id','blog.category_blog_id','blog.uid','blog.title','blog.desc')
+                                ->join('category_blog','category_blog.id', 'blog.category_blog_id')
+                                ->join('users', 'users.id', 'blog.uid')
+                                ->get();
+
+        return view('pages.blog.index',$this->param);
     }
 
     /**
@@ -23,7 +32,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $this->param['data'] = CategoryBlog::all();
+        return view('pages.blog.create',$this->param);
     }
 
     /**
@@ -34,7 +44,38 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:blog,title',
+            'kategori' => 'required',
+            'desc' => 'required',
+            'gambar_banner' => 'required',
+        ],[
+            'required' => 'Data harus terisi'
+        ]);
+
+        try {
+            $slug = Str::slug($request->title);
+            $addData = new Blog;
+            $addData->category_blog_id = $request->kategori;
+            $addData->uid = $request->user_id;
+            $addData->title = $request->title;
+            $addData->slug = $slug;
+            $addData->desc = $request->desc;
+            // input gambar
+            $gambar_blog = $request->file('gambar_blog');
+            $filename = date('His').'.'.$request->file('gambar_blog')->extension();
+
+            if ($gambar_blog->move('img/banner/',$filename)) {
+                $addData->banner = $filename;
+            }
+            $addData->save();
+
+
+        } catch (Exception $e ) {
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+        }
     }
 
     /**
