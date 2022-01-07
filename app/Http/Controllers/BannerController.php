@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
-use App\Models\Blog;
 use Exception;
 use Illuminate\Http\Request;
 use File;
@@ -150,18 +149,18 @@ class BannerController extends Controller
     {
         try {
             // return $id;
-            $deleteBlog = Banner::find($id);
-            $image_path = public_path().'/img/banner/'.$deleteBlog->banner;
+            $deleteBanner = Banner::find($id);
+            $image_path = public_path().'/img/banner/'.$deleteBanner->banner;
 
             if (File::delete($image_path)) {
-                $deleteBlog->delete();
+                $deleteBanner->delete();
             }
             return redirect()->route('banner.index')->withStatus('Berhasil Menghapus Data');
 
         } catch (Exception $e ) {
-            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+            return redirect()->back()->withError('Terdapat kesalahan', $e);
         }catch(\Illuminate\Database\QueryException $e){
-            return redirect()->back()->withErrors('Terdapat kesalahan', $e);
+            return redirect()->back()->withError('Terdapat kesalahan', $e);
         }
 
     }

@@ -14,6 +14,7 @@ class CategoryBlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $param;
     public function index()
     {
         $data = CategoryBlog::all();
@@ -27,7 +28,7 @@ class CategoryBlogController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

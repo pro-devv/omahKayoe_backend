@@ -58,7 +58,7 @@ class BlogController extends Controller
     {
         // return $request;
         $request->validate([
-            'title' => 'required|unique:blog,title',
+            'title' => 'required',
             'kategori' => 'required',
             'desc' => 'required',
             'gambar_blog' => 'required',
