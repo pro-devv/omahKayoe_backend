@@ -62,7 +62,7 @@ class BannerController extends Controller
             }
             $addData->save();
 
-            return redirect('/banner')->withStatus('Berhasil menyimpan data');
+            return redirect()->route('banner.index')->withStatus('Berhasil menyimpan data');
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);
         }catch(\Illuminate\Database\QueryException $e){
@@ -131,7 +131,7 @@ class BannerController extends Controller
             }
             $updateData->save();
 
-            return redirect('/banner')->withStatus('Berhasil menyimpan data');
+            return redirect()->route('banner.index')->withStatus('Berhasil menyimpan data');
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);
         }catch(\Illuminate\Database\QueryException $e){
@@ -156,7 +156,7 @@ class BannerController extends Controller
             if (File::delete($image_path)) {
                 $deleteBlog->delete();
             }
-            return redirect('/banner')->withStatus('Berhasil Menghapus Data');
+            return redirect()->route('banner.index')->withStatus('Berhasil Menghapus Data');
 
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);

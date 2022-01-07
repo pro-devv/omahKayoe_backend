@@ -15,8 +15,8 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-end">
                                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                <li class=""><a href="{{ route('banner.index') }}">{{ ucwords(str_replace('-',' ',Request::segment(1))) }}</a> </li>
-                                <li class="active">{{ ucwords(str_replace('-',' ',Request::segment(2))) }}</li>
+                                <li class=""><a href="{{ route('banner.index') }}">{{ ucwords(str_replace('-',' ',Request::segment(2))) }}</a> </li>
+                                <li class="active">{{ ucwords(str_replace('-',' ',Request::segment(3))) }}</li>
                             </ol>
                         </div>
                     </div>

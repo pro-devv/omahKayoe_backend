@@ -35,7 +35,7 @@
         </footer>
         <!-- /.site-footer -->
         {{-- modal --}}
-        @include('components.partials.modal')
+        {{-- @include('components.partials.modal') --}}
     </div>
     <!-- /#right-panel -->
 

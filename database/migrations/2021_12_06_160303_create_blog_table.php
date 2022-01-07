@@ -17,7 +17,7 @@ class CreateBlogTable extends Migration
             $table->id();
             $table->foreignId('category_blog_id')->constrained('category_blog');
             $table->foreignId('uid')->constrained('users');
-            $table->string('thumbnail');
+            // $table->string('thumbnail');
             $table->string('title');
             $table->string('slug');
             $table->text('desc');

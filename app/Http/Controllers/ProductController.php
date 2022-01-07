@@ -19,11 +19,21 @@ class ProductController extends Controller
     private $param;
     public function index()
     {
-        $this->param['data'] = Product::select('product.id','product.category_id','product.uid','product.name_product','product.thumbnail','product.price','product.color','product.desc','users.name','category.name_category')
-                                        ->join('users','users.id','product.uid')
-                                        ->join('category', 'category.id','product.category_id')
-                                        ->get();
-                                        return view('pages.product.index', $this->param);
+
+
+        if (auth()->user()->hasRole('admin')) {
+           $this->param['data'] = Product::select('product.id','product.category_id','product.uid','product.name_product','product.thumbnail','product.price','product.color','product.desc','users.name','category.name_category')
+                                ->join('users','users.id','product.uid')
+                                ->join('category', 'category.id','product.category_id')
+                                ->where('uid',Auth::user()->id)
+                                ->get();
+        }else{
+            $this->param['data']  = Product::select('product.id','product.category_id','product.uid','product.name_product','product.thumbnail','product.price','product.color','product.desc','users.name','category.name_category')
+                                    ->join('users','users.id','product.uid')
+                                    ->join('category', 'category.id','product.category_id')
+                                    ->get();
+        }
+        return view('pages.product.index', $this->param);
 
     }
 
@@ -87,7 +97,7 @@ class ProductController extends Controller
                         $upFile->save();
                     }
             }
-            return redirect('/product')->withStatus('Berhasil menyimpan data');
+            return redirect()->route('product.index')->withStatus('Berhasil menyimpan data');
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);
         }catch(\Illuminate\Database\QueryException $e){
@@ -174,7 +184,7 @@ class ProductController extends Controller
                         $upFile->save();
                     }
             }
-            return redirect('/product')->withStatus('Berhasil menyimpan data');
+            return redirect()->route('product.index')->withStatus('Berhasil menyimpan data');
 
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);

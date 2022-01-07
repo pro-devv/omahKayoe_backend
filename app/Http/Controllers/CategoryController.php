@@ -48,7 +48,7 @@ class CategoryController extends Controller
             $addData = new Category;
             $addData->name_category = $request->nama_kategori;
             $addData->save();
-            return redirect('/category-product')->withStatus('Berhasil menyimpan data');
+            return redirect()->route('category-product.index')->withStatus('Berhasil menyimpan data');
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);
         }catch(\Illuminate\Database\QueryException $e){
@@ -98,7 +98,7 @@ class CategoryController extends Controller
             $updateData = Category::find($id);
             $updateData->name_category = $request->nama_kategori;
             $updateData->save();
-            return redirect('/category-product')->withStatus('Berhasil menyimpan data');
+            return redirect()->route('category-product.index')->withStatus('Berhasil menyimpan data');
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan', $e);
         }catch(\Illuminate\Database\QueryException $e){

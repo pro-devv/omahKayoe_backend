@@ -46,7 +46,7 @@
                     <div class="card-body">
                         <div class="stat-widget-five">
                             <div class="stat-icon dib flat-color-3">
-                                <i class="pe-7s-browser"></i>
+                                <i class="ti-book"></i>
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
