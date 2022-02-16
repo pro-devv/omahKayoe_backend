@@ -35,9 +35,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 // Frontend Controller
 Route::get('/', [HomeController::class,'index'])->name('beranda');
 Route::get('tentang-desa', [AboutController::class,'index'])->name('tentang-kami');
-Route::get('list-produk', [ListProductController::class,'index']);
-Route::get('blog', [ListBlogController::class,'index']);
-Route::get('kontak', [ListKontakController::class,'index']);
+Route::get('list-produk', [ListProductController::class,'index'])->name('produk');
+Route::get('blog', [ListBlogController::class,'index'])->name('blog');
+Route::get('kontak', [ListKontakController::class,'index'])->name('kontak');
 
 // Backend Controller
 Route::middleware(['auth','role:super-admin|admin'])->group(function () {
