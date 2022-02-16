@@ -33,8 +33,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 // Frontend Controller
-Route::get('/', [HomeController::class,'index']);
-Route::get('tentang-desa', [AboutController::class,'index']);
+Route::get('/', [HomeController::class,'index'])->name('beranda');
+Route::get('tentang-desa', [AboutController::class,'index'])->name('tentang-kami');
 Route::get('list-produk', [ListProductController::class,'index']);
 Route::get('blog', [ListBlogController::class,'index']);
 Route::get('kontak', [ListKontakController::class,'index']);

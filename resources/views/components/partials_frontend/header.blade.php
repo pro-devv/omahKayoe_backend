@@ -13,10 +13,10 @@
                     <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Beranda</a>
+                                <a class="nav-link" href="{{ route('beranda') }}">Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Tentang Desa</a>
+                                <a class="nav-link" href="{{ route('tentang-kami') }}">Tentang Desa</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="category.html">Produk</a>
