@@ -37,6 +37,13 @@ class ProductController extends Controller
 
     }
 
+    public function detail($slug)
+    {
+        $this->param['data'] = Product::all();
+
+        return view('produk.detail-produk');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

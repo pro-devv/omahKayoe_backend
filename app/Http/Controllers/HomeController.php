@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,16 @@ class HomeController extends Controller
                     ->join('category', 'category.id','product.category_id')
                     ->orderBy('id'
                     ,'DESC')
-                    ->get(3);
-        return view('welcome',compact('dataProduk','dataBanner'));
+                    ->limit(4)
+                    ->get();
+        $dataKategori = Category::select('id','name_category')->get();
+
+        $data = array(
+            'dataBanner' => $dataBanner,
+            'dataProduk' => $dataProduk,
+            'dataKategori' => $dataKategori,
+        );
+// return $data;
+        return view('welcome', $data);
     }
 }
