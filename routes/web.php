@@ -41,7 +41,7 @@ Route::get('blog', [ListBlogController::class,'index'])->name('blog');
 Route::get('kontak', [ListKontakController::class,'index'])->name('kontak');
 
 // Backend Controller
-Route::middleware(['auth','role:super-admin|admin'])->group(function () {
+Route::middleware(['auth','role:super-admin|admin|user'])->group(function () {
     // Dashboard
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::prefix('dashboard/')->group(function () {
