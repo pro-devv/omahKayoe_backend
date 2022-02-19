@@ -54,7 +54,7 @@ class UserController extends Controller
                 'address' => $request->address,
                 'password' => Hash::make($request->password),
             ]);
-            $user->assignRole('admin');
+            $user->assignRole('user');
             return redirect()->route('user.index')->withStatus('Berhasil menambahkan data.');
         } catch (Exception $e ) {
             return redirect()->back()->withErrors('Terdapat kesalahan.');
