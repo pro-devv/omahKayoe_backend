@@ -24,6 +24,7 @@
         <input type="hidden" name="foto" value="{{ $data->thumbnail }}">
         <input type="hidden" name="kategori" value="{{ $data->name_category }}">
         <input type="hidden" name="harga" id="harga" value="{{ $data->price }}">
+        <input type="hidden" name="no_hp" value="{{ $data->no_hp }}">
         <div class="product_image_area section_padding">
             <div class="container">
                 <div class="row s_product_inner justify-content-between">
@@ -69,22 +70,26 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nama Produk :</label>
+                                                <input type="text" class="form-control" name="namaProduk" id="re cipient-name">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="recipient-name" class="col-form-label">Nama Pembeli :</label>
-                                                <input type="text" class="form-control" id="recipient-name">
-                                              </div>
-                                              <div class="form-group">
-                                                  <label for="recipient-name" class="col-form-label">No. Telepon :</label>
-                                                  <input type="text" class="form-control" name="phone" id="recipient-name">
-                                                </div>
-                                              <div class="form-group">
-                                                <label for="message-text" class="col-form-label">Alamat Lengkap:</label>
-                                                <textarea class="form-control" id="message-text"></textarea>
-                                              </div>
-                                              <div class="form-group">
-                                                <label for="message-text" class="col-form-label">Total:</label>
-                                                <textarea class="form-control" id="qty_pesan" name="qty_pesan"></textarea>
-                                              </div>
-                                          </div>
+                                                <input type="text" class="form-control" name="namaPembeli" id="re cipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">No. Telepon :</label>
+                                                <input type="text" class="form-control" name="phone" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Alamat Lengkap:</label>
+                                                <textarea class="form-control" name="alamat" id="message-text"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Total:</label>
+                                                <textarea class="form-control" id="qty_pesan" name="qty_pesan" readonly></textarea>
+                                            </div>
+                                        </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                           <button type="submit" class="btn btn-primary" style="background-color: green">Pesan Produk</button>

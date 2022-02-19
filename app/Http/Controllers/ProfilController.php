@@ -32,8 +32,10 @@ class ProfilController extends Controller
             // $user->assignRole('admin');
             return redirect()->back()->withStatus('Berhasil mengedit data.');
         } catch (Exception $e ) {
+            return $e;
             return redirect()->back()->withError('Terdapat kesalahan.');
         }catch(\Illuminate\Database\QueryException $e){
+            return $e;
             return redirect()->back()->withError('Terdapat kesalahan.');
         }
     }
