@@ -36,7 +36,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', [HomeController::class,'index'])->name('beranda');
 Route::get('tentang-desa', [AboutController::class,'index'])->name('tentang-kami');
 Route::get('list-produk', [ListProductController::class,'index'])->name('produk');
-Route::post('produk-detail/{id}', [ListProductController::class,'detail'])->name('produk-detail');
+Route::get('produk-detail/{id}', [ListProductController::class,'detail'])->name('produk-detail');
+Route::post('produk-detail', [ListProductController::class,'store'])->name('store-produk-detail');
 Route::get('blog', [ListBlogController::class,'index'])->name('blog');
 Route::get('kontak', [ListKontakController::class,'index'])->name('kontak');
 
