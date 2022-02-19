@@ -18,12 +18,12 @@
     <!-- breadcrumb start-->
 
     <!--================Single Product Area =================-->
-    <form method="post" action="#">
+    <form method="post" action="{{ route('store-produk-detail') }}">
         @csrf
         <input type="hidden" name="produk" value="{{ $data->name_product }}">
         <input type="hidden" name="foto" value="{{ $data->thumbnail }}">
         <input type="hidden" name="kategori" value="{{ $data->name_category }}">
-        <input type="hidden" name="harga" value="{{ $data->price }}">
+        <input type="hidden" name="harga" id="harga" value="{{ $data->price }}">
         <div class="product_image_area section_padding">
             <div class="container">
                 <div class="row s_product_inner justify-content-between">
@@ -54,10 +54,10 @@
                             <div class="card_area d-flex justify-content-between align-items-center">
                                 <div class="product_count">
                                     <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                                    <input class="input-number" type="text" name="qty" value="1" min="0" max="10">
+                                    <input class="input-number" type="text" id="qty" name="qty" value="1" min="0" max="10">
                                     <span class="number-increment"> <i class="ti-plus"></i></span>
                                 </div>
-                                <button type="button" class="btn_3" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">pesan</button>
+                                <button type="button" class="btn_3" onclick="openModal()">pesan</button>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                       <div class="modal-content">
@@ -68,21 +68,23 @@
                                           </button>
                                         </div>
                                         <div class="modal-body">
-                                          <form>
                                             <div class="form-group">
-                                              <label for="recipient-name" class="col-form-label">Nama Pembeli :</label>
-                                              <input type="text" class="form-control" id="recipient-name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">No. Telepon :</label>
+                                                <label for="recipient-name" class="col-form-label">Nama Pembeli :</label>
                                                 <input type="text" class="form-control" id="recipient-name">
                                               </div>
-                                            <div class="form-group">
-                                              <label for="message-text" class="col-form-label">Alamat Lengkap:</label>
-                                              <textarea class="form-control" id="message-text"></textarea>
-                                            </div>
-                                          </form>
-                                        </div>
+                                              <div class="form-group">
+                                                  <label for="recipient-name" class="col-form-label">No. Telepon :</label>
+                                                  <input type="text" class="form-control" name="phone" id="recipient-name">
+                                                </div>
+                                              <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Alamat Lengkap:</label>
+                                                <textarea class="form-control" id="message-text"></textarea>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Total:</label>
+                                                <textarea class="form-control" id="qty_pesan" name="qty_pesan"></textarea>
+                                              </div>
+                                          </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                           <button type="submit" class="btn btn-primary" style="background-color: green">Pesan Produk</button>
@@ -121,3 +123,14 @@
 
 
 @endsection
+
+@section('js')
+    <script>
+        function openModal() {
+            $('#exampleModal').modal('show');
+            var qty = $('#qty').val();
+            var harga = $('#harga').val();
+            var total = harga * qty;
+            $('#qty_pesan').val(total);
+        }
+    </script>

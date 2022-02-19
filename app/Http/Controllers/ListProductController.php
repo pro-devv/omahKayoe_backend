@@ -33,4 +33,12 @@ class ListProductController extends Controller
         return view('produk.detail-produk', $this->param);
 
     }
+
+    public function store(Request $request)
+    {
+        $phone =  $request->phone;
+        $msg = 'hai';
+
+        return redirect()->away('https://api.whatsapp.com/send?phone='.$phone.'&text='.$msg);
+    }
 }
