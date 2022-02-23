@@ -22,7 +22,7 @@
     <section class="blog_area padding_top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="col-lg-12 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
                             <div class="blog_item_img">
@@ -156,7 +156,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <form action="#">
@@ -335,7 +335,7 @@
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1"
                                     type="submit">Subscribe</button>
                             </form>
-                        </aside>
+                        </aside> --}}
                     </div>
                 </div>
             </div>
